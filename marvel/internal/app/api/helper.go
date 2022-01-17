@@ -12,8 +12,9 @@ func ConfigureRouterField() {
 	r := gin.Default()
 	r.GET("/marvel/", handlers.HandleGetHeroes)
 	r.GET("/marvel/:id", handlers.HandleGetHero)
-	//r.PUT("/marvel/", handlers.HandleUpdateHero)
+	r.PUT("/marvel/", handlers.HandleUpdateHero)
 	r.POST("/marvel/", handlers.HandleCreateHero)
+	r.DELETE("/marvel/:id", handlers.HandleDeleteHero)
 	r.Run() // listen and serve on 0.0.0.0:8080
 }
 func ConfigureStorageField() {
