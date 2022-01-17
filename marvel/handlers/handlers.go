@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"log"
 	"marvel/models"
 	"marvel/storage"
@@ -30,4 +31,22 @@ func HandleCreateHero(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"id": id})
+}
+
+func HandleGetHero(c *gin.Context) {
+	//var hero models.Hero
+	orderID := c.Params.ByName("id")
+	docID, _ := primitive.ObjectIDFromHex(orderID)
+
+	//if err := c.BindUri(&hero); err != nil {
+	//	c.JSON(http.StatusBadRequest, gin.H{"msg": err})
+	//	return
+	//}
+	//var loadedHero, err = storage.GetHeroByID(hero.ID)
+	var loadedHero, err = storage.GetHeroByID(docID)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"msg": err, "msg2": "no documents in result"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"ID": loadedHero.ID, "Name": loadedHero.Name})
 }

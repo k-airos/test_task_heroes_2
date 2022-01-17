@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"errors"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"log"
@@ -43,4 +44,27 @@ func Create(hero *models.Hero) (primitive.ObjectID, error) {
 	}
 	oid := result.InsertedID.(primitive.ObjectID)
 	return oid, nil
+}
+
+// GetHeroByID Retrives a hero by its id from the db
+func GetHeroByID(id primitive.ObjectID) (*models.Hero, error) {
+	var hero *models.Hero
+
+	client, ctx, cancel := GetConnection()
+
+	defer cancel()
+	defer client.Disconnect(ctx)
+
+	result := client.Database(StorageInstance.Config.DBname).Collection(StorageInstance.Config.CollectionName).FindOne(ctx, bson.M{"id": id})
+	if result == nil {
+		return nil, errors.New("Could not find a hero")
+	}
+	err := result.Decode(&hero)
+
+	if err != nil {
+		log.Printf("Failed marshalling %v", err)
+		return nil, err
+	}
+	log.Printf("HERO: %v", hero)
+	return hero, nil
 }
