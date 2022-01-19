@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "0459d3d0-64a7-4c0d-81f8-6071fbea08e0",
+		"name": "DCapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all dc heroes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post hero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"hero_id\": 1,\n    \"hero_name\": \"Халк\",\n    \"creation_date\": 10\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get hero by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/dc/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dc",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete hero by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/dc/61e5bcd33240c530ef56bae4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dc",
+						"61e5bcd33240c530ef56bae4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update hero",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": \"61e5bcd33240c530ef56bae4\",\n    \"hero_name\": \"КТО ТО\",\n    \"creation_date\": 11\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/dc/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dc",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -10,12 +10,12 @@ import (
 )
 
 func HandleGetHeroes(c *gin.Context) {
-	var loadedTasks, err = storage.GetAllHeroes()
+	var loadedHero, err = storage.GetAllHeroes()
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"msg": err})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"tasks": loadedTasks})
+	c.JSON(http.StatusOK, gin.H{"hero": loadedHero})
 }
 
 func HandleCreateHero(c *gin.Context) {

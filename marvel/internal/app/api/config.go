@@ -1,7 +1,7 @@
 package api
 
 type APIConfig struct {
-	Port       string `toml:"bind_addr_marvel"`
+	Port       string `toml:"bind_addr_dc"`
 	ConfigPath string
 }
 
