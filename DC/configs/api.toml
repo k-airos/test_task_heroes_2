@@ -1,0 +1,8 @@
+bind_addr_dc = ":8081"
+#bind_addr_xman = ":8082"
+#bind_addr_disney = ":8083"
+apply_uri = "mongodb://localhost:27017"
+db_name = "heroes"
+dc_collection_name = "dcTB"
+#xman_collection_name = "xmanTB"
+#disney_collection_name = "disneyTB"
